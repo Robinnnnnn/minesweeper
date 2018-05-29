@@ -34,7 +34,7 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
       }
     }
 
-  console.log(board);
+  return board;
 };
 //------------------------------------------------------------------------//
 //row & column index is selected by player
@@ -59,7 +59,7 @@ const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
 //------------------------------------------------------------------------//
 const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {
 
-  if(playerBoard[rowIndex][columnIndex] !== " "){
+  if(playerBoard[rowIndex][columnIndex] !== ""){
     console.log('This tile has already been flipped!');
     return;
   }else if(bombBoard[rowIndex][columnIndex] === 'B'){
@@ -72,11 +72,11 @@ const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {
 //prints a bomb or player board in correct structure
 const printBoard = board => console.log(board.map(row => row.join(" | ")).join('\n'));
 
-let playerBoard = generatePlayerBoard(3, 3);
-let bombBoard = generateBombBoard(3, 3, 3);
+let playerBoard = generatePlayerBoard(3, 4);
+let bombBoard = generateBombBoard(3, 4, 7);
 console.log(getNumberOfNeighborBombs(bombBoard, 0, 0));
 printBoard(playerBoard);
 printBoard(bombBoard);
-flipTile(playerBoard, bombBoard, 0, 0);
+flipTile(playerBoard, bombBoard, 1, 7);
 // // Flip different tiles based on bombBoard to see if neighbors work.
 printBoard(playerBoard);
